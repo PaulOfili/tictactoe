@@ -1,5 +1,5 @@
 {
-  "name": "tictactoe",
+  "name": "@paulofili/tictactoe",
   "version": "1.0.0",
   "description": "The driver program for the tic-tac-toe game",
   "main": "index.js",
