@@ -1,0 +1,18 @@
+{
+  "name": "tictactoe-cli",
+  "version": "1.0.0",
+  "description": "The command line interface for the Tic Tac Toe game powered by tictactoe-driver",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PaulOfili/tictactoe/tree/master/tictactoe-cli"
+  },
+  "author": "Paul Ofili",
+  "license": "MIT",
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
+}

@@ -1,7 +1,7 @@
 const gameReadline = require('readline-sync');
-const {Tictactoe, TictactoeWithAI} = require('./index');
-const {DEFAULT_BOARD_SIZE} = require("./constants");
+const {Tictactoe, TictactoeWithAI} = require('../tictactoe-driver/index');
 
+const DEFAULT_BOARD_SIZE = 3;
 
 const getCorrectResponse = () => {
     let response;
