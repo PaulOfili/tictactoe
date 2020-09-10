@@ -4,9 +4,9 @@
   "description": "The driver program for the tic-tac-toe game",
   "main": "index.js",
   "scripts": {
-    "dev": "node index.js",
-    "lint-check": "eslint index.js",
-    "lint-fix": "eslint --fix index.js"
+    "dev": "node test",
+    "lint:check": "eslint index.js",
+    "lint:fix": "eslint --fix index.js"
   },
   "repository": {
     "type": "git",
