@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@paulofili/tictactoe@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@paulofili/tictactoe/-/tictactoe-1.0.1.tgz#7da78f970ebf4fc3dfd7ed6b9419a6853d0099bc"
+  integrity sha512-jSAJ8fIANoJDsE05YGZ8IUIPY3X2B7bHDJvWFdeW+8ihJzRwe5XyCohpZGEEfz+Yg7NmTGk3jfLHwnj2BJ3n3g==
+
 readline-sync@^1.4.10:
   version "1.4.10"
   resolved "https://registry.yarnpkg.com/readline-sync/-/readline-sync-1.4.10.tgz#41df7fbb4b6312d673011594145705bf56d8873b"

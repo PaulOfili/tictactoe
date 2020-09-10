@@ -7,7 +7,7 @@ class Tictactoe {
         this.currentPiece = Player.FIRST_PLAYER;
         this.isGameRunning = true;
         this.numberOfRemainingSlots = size * size;
-        this.remainingSlots = [...Array(this.numberOfRemainingSlots).keys()].map( i => i+1);
+        this.remainingSlots = [...Array(this.numberOfRemainingSlots).keys()].map((i) => i + 1);
         this.winner = null;
     }
 

@@ -8,7 +8,7 @@ class TictactoeWithAI extends Tictactoe {
         this.playerPiece = this.getOtherPiece(computerPiece);
 
         if (computerPiece === Player.FIRST_PLAYER) {
-            const randomIndex = Math.floor(Math.random() * this.remainingSlots.length);
+            // const randomIndex = Math.floor(Math.random() * this.remainingSlots.length);
             // const computerRandomMove = this.remainingSlots[randomIndex];
             const computerBestMove = this.getComputerMove();
             super.playPiece(computerBestMove);
