@@ -1,7 +1,9 @@
-const { Player } = require("./constants");
+const EventEmitter = require("events");
+const { Player, DEFAULT_BOARD_SIZE } = require("./constants");
 
-class Tictactoe {
-    constructor(size) {
+class Tictactoe extends EventEmitter {
+    constructor(size = DEFAULT_BOARD_SIZE) {
+        super();
         this.board = this.generateInitialBoard(size);
         this.size = size;
         this.currentPiece = Player.FIRST_PLAYER;
@@ -47,6 +49,7 @@ class Tictactoe {
             this.remainingSlots = this.remainingSlots.filter((item) => item !== position);
             this.numberOfRemainingSlots -= 1;
         } else {
+            this.emit("cellTaken");
             return false;
         }
 
@@ -63,6 +66,7 @@ class Tictactoe {
             this.changePiece();
         }
 
+        this.emit("showBoard");
         return true;
     }
 
@@ -118,32 +122,6 @@ class Tictactoe {
             return true;
         }
         return false;
-    }
-
-    checkForGameover() {
-        if (this.numberOfRemainingSlots === 0) {
-            return true;
-        }
-        return false;
-    }
-
-    showBoard() {
-        let board = "\n";
-        for (let i = 0; i < this.size; ++i) {
-            let eachRow = " ";
-            for (let j = 0; j < this.size; ++j) {
-                eachRow += `${(this.board[i][j]) ? this.board[i][j] : "-"}`;
-                if (j < this.size - 1) {
-                    eachRow += " | ";
-                }
-            }
-            if (i < this.size - 1) {
-                eachRow += "\n-----------\n";
-            }
-            board += eachRow;
-        }
-        board += "\n";
-        console.log(board);
     }
 }
 

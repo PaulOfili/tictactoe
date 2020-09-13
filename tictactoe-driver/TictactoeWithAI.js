@@ -1,8 +1,10 @@
-const { Player, Winner, MAX_DEPTH } = require("./constants");
+const {
+    Player, Winner, MAX_DEPTH, DEFAULT_BOARD_SIZE,
+} = require("./constants");
 const Tictactoe = require("./Tictactoe");
 
 class TictactoeWithAI extends Tictactoe {
-    constructor(size, computerPiece) {
+    constructor(computerPiece, size = DEFAULT_BOARD_SIZE) {
         super(size);
         this.computerPiece = computerPiece;
         this.playerPiece = this.getOtherPiece(computerPiece);
@@ -22,8 +24,6 @@ class TictactoeWithAI extends Tictactoe {
             return false;
         }
 
-        this.showBoard();
-
         const computerBestMove = this.getComputerMove();
         super.playPiece(computerBestMove);
 
@@ -31,7 +31,7 @@ class TictactoeWithAI extends Tictactoe {
     }
 
     getComputerMove() {
-        const [bestResult, bestPosition] = this.minimax(MAX_DEPTH, true);
+        const [, bestPosition] = this.minimax(MAX_DEPTH, true);
 
         return bestPosition;
     }
@@ -67,28 +67,29 @@ class TictactoeWithAI extends Tictactoe {
             let bestResult = -Infinity;
             let bestPosition = null;
 
-            for (const slot of availableSlots) {
+            availableSlots.forEach((slot) => {
                 const [row, col] = this.getCoordinatesFromSlot(slot);
                 this.board[row][col] = this.computerPiece;
                 const eachResult = this.minimax(depth - 1, false, this.computerPiece);
 
                 if (depth === MAX_DEPTH) {
-                    // console.log({slot, eachResult})
                     if (eachResult > bestResult) {
                         bestPosition = slot;
                     }
                 }
                 bestResult = Math.max(bestResult, eachResult);
                 this.board[row][col] = Player.EMPTY;
-            }
+            });
+
             if (depth === MAX_DEPTH) {
                 return [bestResult, bestPosition];
             }
             return bestResult;
         }
+
         let worstResult = Infinity;
 
-        for (const slot of availableSlots) {
+        availableSlots.forEach((slot) => {
             const [row, col] = this.getCoordinatesFromSlot(slot);
             this.board[row][col] = this.playerPiece;
 
@@ -96,7 +97,7 @@ class TictactoeWithAI extends Tictactoe {
 
             worstResult = Math.min(worstResult, eachResult);
             this.board[row][col] = Player.EMPTY;
-        }
+        });
         return worstResult;
     }
 }
