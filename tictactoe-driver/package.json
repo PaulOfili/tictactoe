@@ -4,13 +4,14 @@
   "description": "The driver program for the tic-tac-toe game",
   "main": "index.js",
   "scripts": {
-    "precommit": "npm run lint:fix",
+    "precommit-msg": "echo 'Pre-commit checks...' && exit 0",
     "lint:check": "eslint ./**/*.js",
     "lint:fix": "eslint --fix ./**/*.js",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage"
   },
+  "pre-commit": [ "precommit-msg", "lint:fix" ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/PaulOfili/tictactoe.git"
@@ -25,6 +26,7 @@
     "eslint": "^7.8.1",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-plugin-import": "^2.22.0",
-    "jest": "^26.4.2"
+    "jest": "^26.4.2",
+    "pre-commit": "^1.2.2"
   }
 }
