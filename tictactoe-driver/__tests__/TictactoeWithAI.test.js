@@ -12,7 +12,7 @@ beforeAll(() => {
 
 describe("Tictactoe with AI game", () => {
     it("initializes game with right size", () => {
-        game = new TictactoeWithAI(first);
+        game = new TictactoeWithAI(1);
         expect(game).toBeInstanceOf(TictactoeWithAI);
         expect(game.board).toHaveLength(DEFAULT_BOARD_SIZE);
     });
@@ -21,7 +21,7 @@ describe("Tictactoe with AI game", () => {
 describe("Tests game functionalities", () => {
     describe("When computer plays first", () => {
         it("should finish game with first player(X) as winner after these set of moves by player", () => {
-            game = new TictactoeWithAI(first);
+            game = new TictactoeWithAI(1);
             const moves = [3, 3, 5];
             moves.forEach((move) => game.playPiece(move));
 
@@ -35,7 +35,7 @@ describe("Tests game functionalities", () => {
 
     describe("When computer plays second", () => {
         it("should finish game with with a draw after these set of moves by player", () => {
-            game = new TictactoeWithAI(second);
+            game = new TictactoeWithAI(2);
             const moves = [5, 2, 7, 4, 9];
             moves.forEach((move) => game.playPiece(move));
 

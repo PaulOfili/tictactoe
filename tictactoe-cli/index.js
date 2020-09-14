@@ -1,6 +1,6 @@
 const gameReadline = require('readline-sync');
-const { Tictactoe, TictactoeWithAI } = require('@paulofili/tictactoe');
-// const { Tictactoe, TictactoeWithAI } = require('../tictactoe-driver');
+// const { Tictactoe, TictactoeWithAI } = require('@paulofili/tictactoe');
+const { Tictactoe, TictactoeWithAI } = require('../tictactoe-driver');
 
 const DEFAULT_BOARD_SIZE = 3;
 
@@ -10,7 +10,7 @@ const getCorrectResponse = () => {
     while (true) {
         response = gameReadline.questionInt("Choose your medicine: ");
         if ([1,2].includes(Number(response))) {
-            return response;
+            return Number(response);
         }
     }
 }
@@ -52,12 +52,7 @@ if (response === 1) {
     console.log("I see you got some guts, I like that. Do you want computer to play first.\n1. Yes (I am a rockstar)\n2. No (scaredy cat)\n")
 
     response = getCorrectResponse();
-
-    if (response === 1) {
-        tictactoe = new TictactoeWithAI("X");
-    } else {
-        tictactoe = new TictactoeWithAI("O")
-    }
+    tictactoe = new TictactoeWithAI(response);
 }
 tictactoe.on("showBoard",  () => {
     showBoard(tictactoe.board);

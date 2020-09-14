@@ -4,12 +4,16 @@ const {
 const Tictactoe = require("./Tictactoe");
 
 class TictactoeWithAI extends Tictactoe {
-    constructor(computerPiece, size = DEFAULT_BOARD_SIZE) {
+    constructor(response, size = DEFAULT_BOARD_SIZE) {
         super(size);
-        this.computerPiece = computerPiece;
-        this.playerPiece = this.getOtherPiece(computerPiece);
+        if (![1,2].includes(response)) {
+            throw new Error("Invalid parameter. Response must be 1 or 2 only.")
+        }
 
-        if (computerPiece === Player.FIRST_PLAYER) {
+        this.computerPiece = (response === 1) ? Player.FIRST_PLAYER : Player.SECOND_PLAYER;
+        this.playerPiece = this.getOtherPiece(this.computerPiece);
+
+        if (this.computerPiece === Player.FIRST_PLAYER) {
             // const randomIndex = Math.floor(Math.random() * this.remainingSlots.length);
             // const computerRandomMove = this.remainingSlots[randomIndex];
             const computerBestMove = this.getComputerMove();
@@ -31,7 +35,7 @@ class TictactoeWithAI extends Tictactoe {
     }
 
     getComputerMove() {
-        const [, bestPosition] = this.minimax(MAX_DEPTH, true);
+        const [, bestPosition] = this.minimax(MAX_DEPTH, true, null);
 
         return bestPosition;
     }
@@ -53,7 +57,7 @@ class TictactoeWithAI extends Tictactoe {
         //     return 0;
         // }
 
-        if (this.checkForWinner(currentPlayer)) {
+        if (currentPlayer !== null && this.checkForWinner(currentPlayer)) {
             return (this.computerPiece === currentPlayer) ? Winner.COMPUTER : Winner.PLAYER;
         }
 

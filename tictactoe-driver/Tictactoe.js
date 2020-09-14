@@ -4,6 +4,9 @@ const { Player, DEFAULT_BOARD_SIZE } = require("./constants");
 class Tictactoe extends EventEmitter {
     constructor(size = DEFAULT_BOARD_SIZE) {
         super();
+        if (!Number.isInteger(size)) {
+            throw new Error("Invalid parameter. Pass only a number.")
+        }
         this.board = this.generateInitialBoard(size);
         this.size = size;
         this.currentPiece = Player.FIRST_PLAYER;
@@ -42,6 +45,10 @@ class Tictactoe extends EventEmitter {
     }
 
     playPiece(position) {
+        if (position < 1 || position > (this.size * this.size)) {
+            return false
+        }
+
         const [row, col] = this.getCoordinatesFromSlot(position);
 
         if (this.board[row][col] === Player.EMPTY) {
@@ -115,6 +122,11 @@ class Tictactoe extends EventEmitter {
     }
 
     checkForWinner(piece) {
+
+        if (![Player.FIRST_PLAYER, Player.SECOND_PLAYER].includes(piece)) {
+            return new Error("Invalid piece");
+        }
+
         if (this.checkHorizontalorVertical("horizontal", piece)
         || this.checkHorizontalorVertical("vertical", piece)
         || this.checkLeftDiagonal(piece)

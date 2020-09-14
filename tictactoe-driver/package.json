@@ -1,6 +1,6 @@
 {
   "name": "@paulofili/tictactoe",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "The driver program for the tic-tac-toe game",
   "main": "index.js",
   "scripts": {
