@@ -19,7 +19,7 @@ After doing this, run the next command:
 
 or if you prefer Yarn:
 
-    yarn add
+    yarn install
 
 After this completes you can move on to play the game.
 

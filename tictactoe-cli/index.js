@@ -1,6 +1,6 @@
 const gameReadline = require('readline-sync');
-// const { Tictactoe, TictactoeWithAI } = require('@paulofili/tictactoe');
-const { Tictactoe, TictactoeWithAI } = require('../tictactoe-driver');
+const { Tictactoe, TictactoeWithAI } = require('@paulofili/tictactoe');
+// const { Tictactoe, TictactoeWithAI } = require('../tictactoe-driver');
 
 const DEFAULT_BOARD_SIZE = 3;
 

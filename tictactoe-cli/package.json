@@ -13,7 +13,7 @@
   "author": "Paul Ofili",
   "license": "MIT",
   "dependencies": {
-    "@paulofili/tictactoe": "^1.0.2",
+    "@paulofili/tictactoe": "^1.0.3",
     "readline-sync": "^1.4.10"
   }
 }
